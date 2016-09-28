@@ -30,7 +30,27 @@ module.exports = function (grunt) {
 
     // Project settings
     yeoman: appConfig,
+    less : {
+      prod: {
+        options: {
+            paths: ["<%= yeoman.app %>/styles"],
+            cleancss: true
+        },
+        files: {
+            "<%= yeoman.dist %>/styles.css": "<%= yeoman.app %>/styles/*.less"
+        }
+      },
+      dev: {
+        options: {
+            paths: ["<%= yeoman.app %>/styles"],
+            cleancss: true
+        },
+        files: {
+             "<%= yeoman.app %>/styles/style.css": "<%= yeoman.app %>/styles/*.less"
+        }
+      }
 
+    },
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       bower: {
@@ -49,8 +69,8 @@ module.exports = function (grunt) {
         tasks: ['newer:jshint:test', 'newer:jscs:test', 'karma']
       },
       styles: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
-        tasks: ['newer:copy:styles', 'postcss']
+        files: ['<%= yeoman.app %>/styles/{,*/}*.css','<%= yeoman.app %>/styles/{,*/}*.less'],
+        tasks: ['less','newer:copy:styles', 'autoprefixer']
       },
       gruntfile: {
         files: ['Gruntfile.js']
@@ -72,7 +92,7 @@ module.exports = function (grunt) {
       options: {
         port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
+        hostname: '0.0.0.0',
         livereload: 35729
       },
       livereload: {
@@ -220,7 +240,7 @@ module.exports = function (grunt) {
             }
           }
       }
-    }, 
+    },
 
     // Renames files for browser caching purposes
     filerev: {
@@ -434,6 +454,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'less:dev',
       'wiredep',
       'concurrent:server',
       'postcss:server',
@@ -466,6 +487,7 @@ module.exports = function (grunt) {
     'concat',
     'ngAnnotate',
     'copy:dist',
+    'less',
     'cdnify',
     'cssmin',
     'uglify',
