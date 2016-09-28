@@ -1,0 +1,77 @@
+<div ng-include src = "'../views/header.html'"></div>
+<div class="table-container">
+  <h2 class="text-center">Users</h2>
+  <div class="table-wrapper">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Role</th>
+          <th>Mobile Number</th>
+          <th>Email id</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat = "user in users">
+          <td>{{user.firstName}}</td>
+          <td>{{user.lastName}}</td>
+          <td>{{user.role}}</td>
+          <td>{{user.mobile}}</td>
+          <td>{{user.email}}</td>
+        </tr>
+        <!-- <tr>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+        </tr>
+        <tr>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+        </tr>
+        <tr>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+        </tr>
+        <tr>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+        </tr>
+        <tr>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+        </tr>
+        <tr>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+        </tr>
+        <tr>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+        </tr>
+        <tr>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+        </tr> -->
+      </tbody>
+    </table>
+    <div class="button-wrapper clearfix">
+      <button class="pull-right btn btn-default btn-primary text-left" ng-click="addUser()">+ Add new user</button>
+    </div>
+  </div>
+</div>

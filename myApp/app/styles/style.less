@@ -1,0 +1,102 @@
+@import "variables";
+.container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.blue-bg {
+  background-color: @theme-blue;
+}
+.login-container {
+  background-color: @theme-blue;
+  padding: 20vh 400px;
+  height: 100vh;
+  .login-wrapper {
+    height: 60vh;
+    background: rgba(0,0,0,0.2);
+    border-radius: 5px;
+    .login-form {
+      padding-top: 60px;
+      input,button {
+        margin: 40px auto;
+      }
+      input {
+        width: 60%;
+      }
+    }
+  }
+}
+.add-user-container {
+  padding-top: 10px;
+  width:80%;
+  margin: auto;
+  .add-user-form {
+    border: 2px solid rgba(128, 128, 128, 0.42);
+    padding-top: 20px;
+    input {
+      width: 90%;
+      margin: auto;
+    }
+    input,button {
+      margin-top: 20px;
+    }
+    button {
+      margin-bottom: 20px;
+    }
+    select {
+      background: none;
+      border-radius: 5px;
+      padding: 7px 15px;
+      width: 90%;
+      color: grey;
+      margin-left: 5%;
+      margin-top: 20px;
+    }
+  }
+}
+.navbar {
+  background-color: @theme-blue;
+}
+.button-wrapper {
+  text-align: center;
+}
+.btn-default {
+  padding: 10px 30px;
+  &.btn-primary {
+    background-color: @theme-blue;
+    color: white;
+  }
+  &.btn-white {
+    border-color: white;
+    color: @theme-blue;
+  }
+}
+.table-container {
+  width: 80%;
+  margin: auto;
+  .table-wrapper {
+    border: 2px solid rgba(128, 128, 128, 0.42);
+    padding: 20px;
+    margin-top: 50px;
+    .table{
+      thead > tr > th{
+          border-bottom:3px solid grey;
+      }
+      tbody{
+        tr {
+          background-color: white;
+          border-bottom:2px solid grey;
+          td{
+            border:none;
+          }
+        }
+      }
+    }
+
+  }
+}
+.user-name {
+  padding-top: 15px;
+  color: white;
+  font-size: 18px;
+}

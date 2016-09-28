@@ -1,0 +1,99 @@
+.container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.blue-bg {
+  background-color: #258fc1;
+}
+.login-container {
+  background-color: #258fc1;
+  padding: 20vh 400px;
+  height: 100vh;
+}
+.login-container .login-wrapper {
+  height: 60vh;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+.login-container .login-wrapper .login-form {
+  padding-top: 60px;
+}
+.login-container .login-wrapper .login-form input,
+.login-container .login-wrapper .login-form button {
+  margin: 40px auto;
+}
+.login-container .login-wrapper .login-form input {
+  width: 60%;
+}
+.add-user-container {
+  padding-top: 10px;
+  width: 80%;
+  margin: auto;
+}
+.add-user-container .add-user-form {
+  border: 2px solid rgba(128, 128, 128, 0.42);
+  padding-top: 20px;
+}
+.add-user-container .add-user-form input {
+  width: 90%;
+  margin: auto;
+}
+.add-user-container .add-user-form input,
+.add-user-container .add-user-form button {
+  margin-top: 20px;
+}
+.add-user-container .add-user-form button {
+  margin-bottom: 20px;
+}
+.add-user-container .add-user-form select {
+  background: none;
+  border-radius: 5px;
+  padding: 7px 15px;
+  width: 90%;
+  color: grey;
+  margin-left: 5%;
+  margin-top: 20px;
+}
+.navbar {
+  background-color: #258fc1;
+}
+.button-wrapper {
+  text-align: center;
+}
+.btn-default {
+  padding: 10px 30px;
+}
+.btn-default.btn-primary {
+  background-color: #258fc1;
+  color: white;
+}
+.btn-default.btn-white {
+  border-color: white;
+  color: #258fc1;
+}
+.table-container {
+  width: 80%;
+  margin: auto;
+}
+.table-container .table-wrapper {
+  border: 2px solid rgba(128, 128, 128, 0.42);
+  padding: 20px;
+  margin-top: 50px;
+}
+.table-container .table-wrapper .table thead > tr > th {
+  border-bottom: 3px solid grey;
+}
+.table-container .table-wrapper .table tbody tr {
+  background-color: white;
+  border-bottom: 2px solid grey;
+}
+.table-container .table-wrapper .table tbody tr td {
+  border: none;
+}
+.user-name {
+  padding-top: 15px;
+  color: white;
+  font-size: 18px;
+}
+

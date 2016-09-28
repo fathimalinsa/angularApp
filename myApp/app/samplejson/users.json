@@ -1,0 +1,54 @@
+{
+    "status": 200,
+    "responseMessage": "Success",
+        "userList": [
+            {
+                "firstName": "Rahul",
+                "lastName":"Kookal",
+                "role": "viewer",
+                "mobile": "2223334445",
+                "email":"testmail@gmail.com"
+            },
+            {
+                "firstName": "Rahul",
+                "lastName":"Kookal",
+                "role": "viewer",
+                "mobile": "2223334445",
+                "email":"testmail@gmail.com"
+            },
+            {
+                "firstName": "Rahul",
+                "lastName":"Kookal",
+                "role": "viewer",
+                "mobile": "2223334445",
+                "email":"testmail@gmail.com"
+            },
+            {
+                "firstName": "Rahul",
+                "lastName":"Kookal",
+                "role": "viewer",
+                "mobile": "2223334445",
+                "email":"testmail@gmail.com"
+            },
+            {
+                "firstName": "Rahul",
+                "lastName":"Kookal",
+                "role": "viewer",
+                "mobile": "2223334445",
+                "email":"testmail@gmail.com"
+            },
+            {
+                "firstName": "Rahul",
+                "lastName":"Kookal",
+                "role": "viewer",
+                "mobile": "2223334445",
+                "email":"testmail@gmail.com"
+            },
+            {
+                "firstName": "Rahul",
+                "lastName":"Kookal",
+                "role": "viewer",
+                "mobile": "2223334445",
+                "email":"testmail@gmail.com"
+            }
+]}
