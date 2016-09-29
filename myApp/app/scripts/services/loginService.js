@@ -1,9 +1,17 @@
 angular.module('myApp')
-.service('loginService', function($http){
+.service('loginService', function($q,$http,appConstants,BaseWebService){
        this.login = function(loginParams){
+            sendData = {};
+            sendData = loginParams;
+            var deferred = $q.defer();
+            var url = appConstants.baseUrl+'/users/login';
             console.log(loginParams);
-            return $http.get('samplejson/login.json').then(function(response) {
-                return response.data;
+            BaseWebService.postJSON(url, sendData).then(function(data) {
+              console.log(data);
+            deferred.resolve(data);
+            },function(data){
+              deferred.reject(data);
             });
+            return deferred.promise;
        }
 });
