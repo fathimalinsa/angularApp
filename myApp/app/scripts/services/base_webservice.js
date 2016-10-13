@@ -7,7 +7,7 @@ myApp.service('BaseWebService',['$http', '$q', '$window', function($http, $q, $w
     *   @param {Object} data for webservice
     *   @return {promise}
     */
-    this.callWebService = function(httpMethod, url, params){
+    this.callWebService = function(httpMethod, url, params,token){
 
         var deferred = $q.defer();
         if(typeof params === "undefined"){
@@ -17,6 +17,7 @@ myApp.service('BaseWebService',['$http', '$q', '$window', function($http, $q, $w
         var httpDict = {};
         httpDict.url = url;
         httpDict.method = httpMethod;
+        // httpDict.headers={'Content-Type': 'application/json','token': '3a7d6efe09dca3ace97ffbfa59bc97fd9b54202281ace1fdda538a76834b915cb40764c793534946ea5dfcc179f78e4b3b697242896ef69b31895a02ffb73a09'};
         httpDict.headers={'Content-Type': 'application/json'};
         if(httpMethod === 'GET' || httpMethod === 'DELETE'){
             httpDict.params = params;
@@ -25,9 +26,10 @@ myApp.service('BaseWebService',['$http', '$q', '$window', function($http, $q, $w
             httpDict.data = params;
         }
 
-        $http(httpDict).success(function(response) {
-          console.log(response);
+        $http(httpDict).success(function(response,status,headers) {
+          console.log(headers());
             if(response.status === 200){
+              console.log("reached");
                 deferred.resolve(response);
             } else if(response.status === 400) {
                 // please note the type of error expecting is array
@@ -63,15 +65,20 @@ myApp.service('BaseWebService',['$http', '$q', '$window', function($http, $q, $w
         return deferred.promise;
     };
 
-    this.getJSON = function(url, params) {
-        return this.callWebService("GET", url, params);
+    this.getJSON = function(url, params, token) {
+        return this.callWebService("GET", url, params, token);
     };
 
     this.putJSON = function(url, params) {
         return this.callWebService("PUT", url, params);
     };
 
-    this.postJSON = function(url, data) {
+    this.postJSON = function(url, data,token) {
+        return this.callWebService("POST", url, data, token);
+    };
+
+    this.postJSONnoHeader = function(url, data) {
+        console.log("reached post");
         return this.callWebService("POST", url, data);
     };
 

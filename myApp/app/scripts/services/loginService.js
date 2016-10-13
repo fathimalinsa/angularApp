@@ -6,7 +6,7 @@ angular.module('myApp')
             var deferred = $q.defer();
             var url = appConstants.baseUrl+'/users/login';
             console.log(loginParams);
-            BaseWebService.postJSON(url, sendData).then(function(data) {
+            BaseWebService.postJSONnoHeader(url, sendData).then(function(data) {
               console.log(data);
             deferred.resolve(data);
             },function(data){

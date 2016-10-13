@@ -5,20 +5,29 @@
     <table class="table">
       <thead>
         <tr>
+          <th>Username</th>
           <th>First Name</th>
           <th>Last Name</th>
           <th>Role</th>
-          <th>Mobile Number</th>
-          <th>Email id</th>
+          <th colspan="2">Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat = "user in users">
-          <td>{{user.firstName}}</td>
-          <td>{{user.lastName}}</td>
+          <td ng-click="viewUser(user.id)">{{user.user_name}}</td>
+          <td>{{user.first_name}}</td>
+          <td>{{user.second_name}}</td>
           <td>{{user.role}}</td>
-          <td>{{user.mobile}}</td>
-          <td>{{user.email}}</td>
+          <td ng-show = "loggedInRole=='master'||loggedInRole=='admin'">
+            <div class="button-wrapper clearfix">
+              <button class="pull-left btn btn-default btn-primary text-left" ng-click="updateUser(user.id)">Update</button>
+            </div>
+          </td>
+          <td ng-show = "loggedInRole=='master'">
+            <div class="button-wrapper clearfix">
+              <button class="pull-left btn btn-default btn-primary text-left" ng-click="deleteUser(user.user_name)">Delete</button>
+            </div>
+          </td>
         </tr>
         <!-- <tr>
           <td>test</td>

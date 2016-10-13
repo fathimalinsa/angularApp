@@ -8,23 +8,31 @@
  * Controller of the myApp
  */
 angular.module('myApp')
-  .controller('addUserController', function ($scope,$rootScope,$http,$state,$stateParams,addUserService) {
+  .controller('updateUserController', function ($scope,$http,$state,$stateParams,updateUserService,userDetailsService) {
     $scope.user = {};
-    if($rootScope.loggedInRole == "master"){
-      $scope.roles = ["Select your role","Master","Admin", "Agency", "Autheriser"];
-    }
-    if($rootScope.loggedInRole == "admin"){
-      $scope.roles = ["Select your role", "Agency", "Autheriser"];
-    }
-    $scope.addUser = function () {
+    $scope.roles = ["Select your role","Admin", "Agency", "Autheriser","Agency-sub","Viewer"];
+    console.log($stateParams);
+    var id = $stateParams.id;
+    userDetailsService.fetchUsers().then(function(data){
+      var users = data.data;
+      console.log(users);
+      for (var key in users){
+        if(users[key].id == id){
+          $scope.user = users[key];
+          break;
+        }
+      }
+      console.log($scope.user);
+    });
+    $scope.update = function () {
       $scope.showErrormessage = false;
-      $scope.addedUser = false;
+      $scope.updatedUser = false;
       console.log($scope.user1);
-      if(($scope.firstName==="")||($scope.firstName === undefined)){
+      if(($scope.user.first_name==="")||($scope.user.first_name === undefined)){
               $scope.showErrormessage = true;
               $scope.errorMessage = "Enter first name";
       }
-      else if (($scope.lastName==="")||($scope.lastName === undefined)){
+      else if (($scope.user.second_name==="")||($scope.user.second_name === undefined)){
               $scope.showErrormessage = true;
               $scope.errorMessage = "Enter last name";
       }
@@ -32,35 +40,27 @@ angular.module('myApp')
               $scope.showErrormessage = true;
               $scope.errorMessage = "Enter role";
       }
-      else if (($scope.password==="")||($scope.password === undefined)){
+      else if (($scope.user.password==="")||($scope.user.password === undefined)){
               $scope.showErrormessage = true;
               $scope.errorMessage = "Enter password";
       }
-      else if (($scope.confirmPassword==="")||($scope.confirmPassword === undefined)){
+      else if (($scope.user.confirmPassword==="")||($scope.user.confirmPassword === undefined)){
               $scope.showErrormessage = true;
               $scope.errorMessage = "Passwords do not match";
       }
-      else if ($scope.confirmPassword!= $scope.password){
+      else if ($scope.user.confirmPassword!= $scope.user.password){
               $scope.showErrormessage = true;
               $scope.errorMessage = "Passwords do not match";
-      }
-      else if (($scope.userName==="")||($scope.userName === undefined)){
-              $scope.showErrormessage = true;
-              $scope.errorMessage = "Enter user name";
       }
       else{
-        $scope.user.user_name = $scope.userName;
-        $scope.user.first_name = $scope.firstName;
-        $scope.user.second_name = $scope.lastName;
-        $scope.user.password = $scope.password;
         $scope.user.role = $scope.role;
         $scope.user.image_path = "asaqawsq";
-        addUserService.addUser($scope.user)
+        updateUserService.updateUser($scope.user)
         .then(function(data){
                     console.log(data);
                     status = data.status;
                     if(status=="200"){
-                        $scope.addedUser = true;
+                        $scope.updatedUser = true;
                     }
                 },
               function(error){
@@ -69,7 +69,7 @@ angular.module('myApp')
                 if(status=="409"){
                   $scope.showErrormessage = true;
                   $scope.errorMessage = "User already exists!";
-                  $scope.addedUser = false;
+                  $scope.updatedUser = false;
                 }
               });
      }

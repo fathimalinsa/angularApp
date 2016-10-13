@@ -26,10 +26,16 @@ angular.module('myApp')
             // var loginStatus = data.status;
             if (data.status == "200"){
               console.log("login success");
+              var userRole = '';
               localStorage.setItem("isLoggedIn", true);
-              $rootScope.isLoggedIn = true;
-              $rootScope.loggedInUserName = user.userName;
-              $state.go("userDetails")
+              localStorage.setItem("loggedInUserName", user.userName);
+              if((data.role == '')||(data.role == undefined)){
+                localStorage.setItem("loggedInRole", "master");
+              }
+              else {
+                localStorage.setItem("loggedInRole", data.role);
+              }
+              $state.go("userDetails");
             }
           },
           function(error){

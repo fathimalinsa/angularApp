@@ -25,4 +25,14 @@ myApp.config(function($stateProvider,$urlRouterProvider) {
           templateUrl: "../views/userDetails.html",
           controller: "userDetailsController"
         })
+        .state('updateUser', {
+          url: "/update:id",
+          templateUrl: "../views/updateUser.html",
+          controller: "updateUserController"
+        })
+        .state('viewUser', {
+          url: "/user:id",
+          templateUrl: "../views/viewUser.html",
+          controller: "viewUserController"
+        })
 });
