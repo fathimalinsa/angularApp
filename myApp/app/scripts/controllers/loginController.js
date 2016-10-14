@@ -35,6 +35,7 @@ angular.module('myApp')
               else {
                 localStorage.setItem("loggedInRole", data.role);
               }
+              $rootScope.setLoginDetails();
               $state.go("userDetails");
             }
           },

@@ -1,0 +1,32 @@
+<div ng-include src = "'../views/header.html'"></div>
+<div class="table-container">
+  <h2 class="text-center">Profiles</h2>
+  <div class="table-wrapper">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Voter's id</th>
+          <th>State</th>
+          <th colspan="2" ng-show = "loggedInRole=='Autheriser'">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat = "user in users">
+          <td ng-click="viewUser(user.id)">{{user.user_name}}</td>
+          <td>{{user.first_name}}</td>
+          <td>{{user.second_name}}</td>
+          <td>{{user.voters_id}}</td>
+          <td>{{user.state}}</td>
+          <td ng-show = "loggedInRole=='Autheriser'">
+            <div class="button-wrapper clearfix">
+              <button class="pull-left btn btn-default btn-primary text-left" ng-click="approve(user.id)">Approve</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

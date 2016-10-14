@@ -20,8 +20,13 @@
           <li><a ng-href="#/about">About</a></li>
           <li><a ng-href="#/">Contact</a></li>
         </ul>
-        <div class="pull-right user-name">
-          <p>{{loggedInUserName}}</p>
+        <div class="pull-right">
+          <div class="col-lg-6 col-md-6 user-name">
+            <p>{{loggedInUserName}}</p>
+          </div>
+          <div class="col-lg-6 col-md-6  user-name">
+            <p ng-click="logout()">Logout</p>
+          </div>
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@
           <th>First Name</th>
           <th>Last Name</th>
           <th>Role</th>
-          <th colspan="2">Actions</th>
+          <th colspan="2" ng-show = "loggedInRole=='Master'||loggedInRole=='Admin'">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -18,69 +18,37 @@
           <td>{{user.first_name}}</td>
           <td>{{user.second_name}}</td>
           <td>{{user.role}}</td>
-          <td ng-show = "loggedInRole=='master'||loggedInRole=='admin'">
+          <td ng-show = "loggedInRole=='master'||loggedInRole=='Admin'">
             <div class="button-wrapper clearfix">
               <button class="pull-left btn btn-default btn-primary text-left" ng-click="updateUser(user.id)">Update</button>
             </div>
           </td>
           <td ng-show = "loggedInRole=='master'">
             <div class="button-wrapper clearfix">
-              <button class="pull-left btn btn-default btn-primary text-left" ng-click="deleteUser(user.user_name)">Delete</button>
+              <button class="pull-left btn btn-default btn-primary text-left" ng-click="deleteUser(user.id)">Delete</button>
             </div>
           </td>
         </tr>
-        <!-- <tr>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-        </tr>
-        <tr>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-        </tr>
-        <tr>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-        </tr>
-        <tr>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-        </tr>
-        <tr>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-        </tr>
-        <tr>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-        </tr>
-        <tr>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-        </tr>
-        <tr>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-        </tr> -->
       </tbody>
     </table>
-    <div class="button-wrapper clearfix">
-      <button class="pull-right btn btn-default btn-primary text-left" ng-click="addUser()">+ Add new user</button>
-    </div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+          <div class="col-lg-4 col-md-4">
+            <div class="button-wrapper clearfix">
+              <button class="pull-right btn btn-default btn-primary text-left" ng-click="addUser()">+ Add new user</button>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4" ng-show = "loggedInRole=='Agency'">
+            <div class="button-wrapper clearfix">
+              <button class="pull-right btn btn-default btn-primary text-left" ng-click="addProfile()">+ Add new profile</button>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4" ng-show = "loggedInRole=='Agency'||loggedInRole=='Autheriser'">
+            <div class="button-wrapper clearfix">
+              <button class="pull-right btn btn-default btn-primary text-left" ng-click="listProfile()">View Profiles</button>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 </div>

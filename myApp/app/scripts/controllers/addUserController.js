@@ -10,12 +10,22 @@
 angular.module('myApp')
   .controller('addUserController', function ($scope,$rootScope,$http,$state,$stateParams,addUserService) {
     $scope.user = {};
-    if($rootScope.loggedInRole == "master"){
+    if($rootScope.loggedInRole == "Master"){
       $scope.roles = ["Select your role","Master","Admin", "Agency", "Autheriser"];
     }
-    if($rootScope.loggedInRole == "admin"){
+    if($rootScope.loggedInRole == "Admin"){
       $scope.roles = ["Select your role", "Agency", "Autheriser"];
     }
+    //an array of files selected
+    $scope.files = [];
+
+    //listen for the file selected event
+    $scope.$on("fileSelected", function (event, args) {
+        $scope.$apply(function () {            
+            //add the file object to the scope's files collection
+            $scope.files.push(args.file);
+        });
+    });
     $scope.addUser = function () {
       $scope.showErrormessage = false;
       $scope.addedUser = false;

@@ -35,4 +35,14 @@ myApp.config(function($stateProvider,$urlRouterProvider) {
           templateUrl: "../views/viewUser.html",
           controller: "viewUserController"
         })
+        .state('addProfile', {
+          url: "/addProfile",
+          templateUrl: "../views/addProfile.html",
+          controller: "addProfileController"
+        })
+        .state('listProfile', {
+          url: "/profile",
+          templateUrl: "../views/listProfile.html",
+          controller: "listProfileController"
+        })
 });

@@ -24,8 +24,17 @@ angular.module('myApp')
     }
     $scope.deleteUser = function(userToDelete) {
       userDetailsService.deleteUser(userToDelete).then(function(data){
-        console.log("deleted");
+        userDetailsService.fetchUsers().then(function(data){
+        $scope.users = data.data;
+        console.log($scope.users);
+        });
       });
+    }
+    $scope.addProfile = function(){
+      $state.go("addProfile");
+    }
+    $scope.listProfile = function() {
+      $state.go("listProfile")
     }
     console.log($rootScope.isLoggedIn,$rootScope.loggedInUserName,$rootScope.loggedInRole);
   });

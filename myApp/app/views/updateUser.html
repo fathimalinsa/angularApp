@@ -5,7 +5,7 @@
     <div class="alert alert-danger" ng-show="showErrormessage">
       <p>{{errorMessage}}</p>
     </div>
-    <div class="alert alert-success" ng-show="addedUser">
+    <div class="alert alert-success" ng-show="updatedUser">
       <p>User updated successfully!</p>
     </div>
     <div class="add-user-form">
@@ -22,12 +22,6 @@
                 <select ng-model="role" ng-init="role = user.role">
                   <option ng-repeat="role in roles">{{role}}</option>
                 </select>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <input type="password" class="form-control" placeholder="Confirm Password" ng-model="user.confirmPassword">
             </div>
           </div>
           <div class="button-wrapper col-lg-12 col-md-12">

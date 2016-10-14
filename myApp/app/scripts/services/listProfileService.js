@@ -1,9 +1,9 @@
 angular.module('myApp')
-.service('userDetailsService', function($q,$http,appConstants,BaseWebService){
+.service('listProfileService', function($q,$http,appConstants,BaseWebService){
 
         this.fetchUsers = function(){
           var deferred = $q.defer();
-          var url = appConstants.baseUrl+'/users/list';
+          var url = appConstants.baseUrl+'/profile/list';
           var params = {};
           var token = '3a7d6efe09dca3ace97ffbfa59bc97fd9b54202281ace1fdda538a76834b915cb40764c793534946ea5dfcc179f78e4b3b697242896ef69b31895a02ffb73a09';
             BaseWebService.getJSON(url,params,token).then(function(data) {
@@ -14,17 +14,15 @@ angular.module('myApp')
           });
           return deferred.promise;
        }
-       this.deleteUser = function(userParams){
+       this.approve = function(userParams){
          sendData = {};
          //   return $http.get('samplejson/addUser.json').then(function(response) {
          //      return response.data;
          //  });
-         sendData.id = userParams;
+         sendData.user = userParams;
          var deferred = $q.defer();
-         console.log(userParams);
-         var url = appConstants.baseUrl+'/users/delete?id='+userParams;
-         var token = 'fdsfsdgsfgfgfgfgdfdf';
-           BaseWebService.deleteJSON(url).then(function(data) {
+         var url = appConstants.baseUrl+'/profile/approve?id='+userParams;
+           BaseWebService.postJSON(url, sendData).then(function(data) {
              console.log(data);
            deferred.resolve(data);
            },function(data){

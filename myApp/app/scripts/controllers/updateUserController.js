@@ -40,22 +40,16 @@ angular.module('myApp')
               $scope.showErrormessage = true;
               $scope.errorMessage = "Enter role";
       }
-      else if (($scope.user.password==="")||($scope.user.password === undefined)){
-              $scope.showErrormessage = true;
-              $scope.errorMessage = "Enter password";
-      }
-      else if (($scope.user.confirmPassword==="")||($scope.user.confirmPassword === undefined)){
-              $scope.showErrormessage = true;
-              $scope.errorMessage = "Passwords do not match";
-      }
-      else if ($scope.user.confirmPassword!= $scope.user.password){
-              $scope.showErrormessage = true;
-              $scope.errorMessage = "Passwords do not match";
-      }
       else{
         $scope.user.role = $scope.role;
         $scope.user.image_path = "asaqawsq";
-        updateUserService.updateUser($scope.user)
+        $scope.sendData = {};
+        $scope.sendData.user_name = $scope.user.user_name;
+        $scope.sendData.first_name = $scope.user.first_name;
+        $scope.sendData.second_name = $scope.user.second_name;
+        $scope.sendData.image_path = $scope.user.image_path;
+        $scope.sendData.role = $scope.user.role;
+        updateUserService.updateUser($scope.sendData)
         .then(function(data){
                     console.log(data);
                     status = data.status;
@@ -68,7 +62,7 @@ angular.module('myApp')
                 status = error.status;
                 if(status=="409"){
                   $scope.showErrormessage = true;
-                  $scope.errorMessage = "User already exists!";
+                  $scope.errorMessage = "Update failed.Try aagain later.";
                   $scope.updatedUser = false;
                 }
               });
