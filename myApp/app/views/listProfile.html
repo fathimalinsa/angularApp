@@ -10,18 +10,21 @@
           <th>Last Name</th>
           <th>Voter's id</th>
           <th>State</th>
+          <th>Status</th>
           <th colspan="2" ng-show = "loggedInRole=='Autheriser'">Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat = "user in users">
-          <td ng-click="viewUser(user.id)">{{user.user_name}}</td>
+          <td ng-click="viewProfile(user.id)">{{user.user_name}}</td>
           <td>{{user.first_name}}</td>
           <td>{{user.second_name}}</td>
           <td>{{user.voters_id}}</td>
           <td>{{user.state}}</td>
+          <td ng-show="user.verified==true">Approved</td>
+          <td ng-show="user.verified==false">Not approved</td>
           <td ng-show = "loggedInRole=='Autheriser'">
-            <div class="button-wrapper clearfix">
+            <div class="button-wrapper clearfix" ng-show="user.verified==false">
               <button class="pull-left btn btn-default btn-primary text-left" ng-click="approve(user.id)">Approve</button>
             </div>
           </td>

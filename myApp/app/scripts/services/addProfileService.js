@@ -6,7 +6,7 @@ angular.module('myApp')
           //   return $http.get('samplejson/addUser.json').then(function(response) {
           //      return response.data;
           //  });
-          sendData.user = userParams;
+          sendData.profile = userParams;
           var deferred = $q.defer();
           var url = appConstants.baseUrl+'/profile/create';
           var token = 'fdsfsdgsfgfgfgfgdfdf';

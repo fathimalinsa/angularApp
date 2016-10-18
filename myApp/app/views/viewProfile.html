@@ -1,0 +1,36 @@
+<div ng-include src = "'../views/header.html'"></div>
+<div class="content-wrapper">
+  <div class="add-user-container">
+    <h2 class="text-center">{{user.user_name}}</h2>
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="col-lg-6 col-md-6">
+          <label>Photograph</label>
+          <img src="../images/profile1.png">
+          <br>
+          <label>Aadhar</label>
+          <img src="images/aadhar.png">
+          <br>
+          <label>Voter's id</label>
+          <img src="images/voter.png">
+        </div>
+        <div class="col-lg-6 col-md-6 profile">
+          <p>NAME: {{user.user_name}}</p>
+          <p>FIRST NAME: {{user.first_name}}</p>
+          <p>SECOND NAME:{{user.second_name}}</p>
+          <p>MOBILE:{{user.mobile}}</p>
+          <p>VOTER'S ID:{{user.voters_id}}</p>
+          <p>AADHAR:{{user.sponser_number}}</p>
+          <p>SPONSER NAME:{{user.sponsers_name}}</p>
+          <p>BLOOD GROUP:{{user.blood_group}}</p>
+          <p>HEIGHT :{{user.height}}</p>
+          <p>WEIGHT :{{user.weight}}</p>
+          <p>CRIMINAL BACKGROUND:{{user.criminal_background}}</p>
+          <p>ADDRESS LINE 1 :{{user.addr_line1}}</p>
+          <p>ADDRESS LINE 2 :{{user.addr_line2}}</p>
+          <p>CURRENT LOCATION :{{user.current_location}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

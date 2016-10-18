@@ -15,8 +15,14 @@ angular.module('myApp')
     });
     $scope.approve = function (id){
       listProfileService.approve(id).then(function(data){
-        console.log("approved");
+        listProfileService.fetchUsers().then(function(data){
+          $scope.users = data.data;
+          console.log($scope.users);
+        });
       });
+    }
+    $scope.viewProfile = function (id) {
+      $state.go("viewProfile",{id:id});
     }
     console.log($rootScope.isLoggedIn,$rootScope.loggedInUserName,$rootScope.loggedInRole);
   });

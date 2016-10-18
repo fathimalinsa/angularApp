@@ -10,6 +10,7 @@
 angular.module('myApp')
   .controller('addProfileController', function ($scope,$rootScope,$http,$state,$stateParams,addProfileService) {
     $scope.user = {};
+    $scope.options = ["Criminal background", "Yes", "No"];
     $scope.addProfile = function () {
       $scope.showErrormessage = false;
       $scope.addedUser = false;
@@ -21,18 +22,6 @@ angular.module('myApp')
       else if (($scope.second_name==="")||($scope.second_name === undefined)){
               $scope.showErrormessage = true;
               $scope.errorMessage = "Enter last name";
-      }
-      else if (($scope.password==="")||($scope.password === undefined)){
-              $scope.showErrormessage = true;
-              $scope.errorMessage = "Enter password";
-      }
-      else if (($scope.confirmPassword==="")||($scope.confirmPassword === undefined)){
-              $scope.showErrormessage = true;
-              $scope.errorMessage = "Passwords do not match";
-      }
-      else if ($scope.confirmPassword!= $scope.password){
-              $scope.showErrormessage = true;
-              $scope.errorMessage = "Passwords do not match";
       }
       else if (($scope.user_name==="")||($scope.user_name === undefined)){
               $scope.showErrormessage = true;
@@ -82,11 +71,26 @@ angular.module('myApp')
               $scope.showErrormessage = true;
               $scope.errorMessage = "Enter pan number";
       }
+      else if (($scope.blood_group==="")||($scope.blood_group === undefined)){
+              $scope.showErrormessage = true;
+              $scope.errorMessage = "Enter blood group";
+      }
+      else if (($scope.weight==="")||($scope.weight === undefined)){
+              $scope.showErrormessage = true;
+              $scope.errorMessage = "Enter weight";
+      }
+      else if (($scope.height==="")||($scope.height === undefined)){
+              $scope.showErrormessage = true;
+              $scope.errorMessage = "Enter height";
+      }
+      else if ($scope.selectedOption==="options[0]"){
+              $scope.showErrormessage = true;
+              $scope.errorMessage = "Select whether the profile has criminal background";
+      }
       else{
         $scope.user.user_name = $scope.user_name;
         $scope.user.first_name = $scope.first_name;
         $scope.user.second_name = $scope.second_name;
-        $scope.user.password = $scope.password;
         $scope.user.addr_line1 = $scope.addr_line1;
         $scope.user.addr_line2= $scope.addr_line2;
         $scope.user.city = $scope.city;
@@ -98,7 +102,18 @@ angular.module('myApp')
         $scope.user.voters_id = $scope.voters_id;
         $scope.user.sponsers_name = $scope.sponsers_name;
         $scope.user.sponser_number = $scope.sponser_number;
-        $scope.user.verified = " ";
+        $scope.user.verified = false;
+        $scope.user.criminal_background = $scope.selectedOption;
+        $scope.user.weight = $scope.weight;
+        $scope.user.height = $scope.height;
+        $scope.user.current_location = $scope.current_location;
+        $scope.user.blood_group = $scope.blood_group;
+        if($scope.selectedOption=="Yes"){
+          $scope.user.criminal_background = true;
+        }
+        if($scope.selectedOption=="No"){
+          $scope.user.criminal_background = false;
+        }
         addProfileService.addProfile($scope.user)
         .then(function(data){
                     console.log(data);

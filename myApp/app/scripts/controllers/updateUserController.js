@@ -8,9 +8,14 @@
  * Controller of the myApp
  */
 angular.module('myApp')
-  .controller('updateUserController', function ($scope,$http,$state,$stateParams,updateUserService,userDetailsService) {
+  .controller('updateUserController', function ($rootScope,$scope,$http,$state,$stateParams,updateUserService,userDetailsService) {
     $scope.user = {};
-    $scope.roles = ["Select your role","Admin", "Agency", "Autheriser","Agency-sub","Viewer"];
+    if($rootScope.loggedInRole == "Master"){
+      $scope.roles = ["Select your role","Master","Admin", "Agency", "Autheriser"];
+    }
+    if($rootScope.loggedInRole == "Admin"){
+      $scope.roles = ["Select your role", "Agency", "Autheriser"];
+    }
     console.log($stateParams);
     var id = $stateParams.id;
     userDetailsService.fetchUsers().then(function(data){

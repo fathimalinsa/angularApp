@@ -34,11 +34,11 @@
       <div class="row">
         <div class="col-lg-12 col-md-12">
           <div class="col-lg-4 col-md-4">
-            <div class="button-wrapper clearfix">
+            <div class="button-wrapper clearfix" ng-show = "loggedInRole=='master'||loggedInRole=='Master'||loggedInRole=='Admin'||loggedInRole=='admin'">
               <button class="pull-right btn btn-default btn-primary text-left" ng-click="addUser()">+ Add new user</button>
             </div>
           </div>
-          <div class="col-lg-4 col-md-4" ng-show = "loggedInRole=='Agency'">
+          <div class="col-lg-4 col-md-4" ng-show = "loggedInRole=='Agency'||loggedInRole=='agency'">
             <div class="button-wrapper clearfix">
               <button class="pull-right btn btn-default btn-primary text-left" ng-click="addProfile()">+ Add new profile</button>
             </div>
