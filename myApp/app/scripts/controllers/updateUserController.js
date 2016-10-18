@@ -10,10 +10,10 @@
 angular.module('myApp')
   .controller('updateUserController', function ($rootScope,$scope,$http,$state,$stateParams,updateUserService,userDetailsService) {
     $scope.user = {};
-    if($rootScope.loggedInRole == "Master"){
+    if(($rootScope.loggedInRole == "Master")||($rootScope.loggedInRole == "master")){
       $scope.roles = ["Select your role","Master","Admin", "Agency", "Autheriser"];
     }
-    if($rootScope.loggedInRole == "Admin"){
+    if(($rootScope.loggedInRole == "Admin")||($rootScope.loggedInRole == "admin")){
       $scope.roles = ["Select your role", "Agency", "Autheriser"];
     }
     console.log($stateParams);
