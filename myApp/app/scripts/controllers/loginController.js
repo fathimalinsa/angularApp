@@ -36,7 +36,12 @@ angular.module('myApp')
                 localStorage.setItem("loggedInRole", data.role);
               }
               $rootScope.setLoginDetails();
-              $state.go("userDetails");
+              if(($rootScope.loggedInRole == "Master")||($rootScope.loggedInRole == "master")||($rootScope.loggedInRole == "Admin")||($rootScope.loggedInRole == "admin")){
+                $state.go("userDetails");
+              }
+              else{
+                $state.go("listProfile");
+              }
             }
           },
           function(error){

@@ -1,35 +1,79 @@
 <div ng-include src = "'../views/header.html'"></div>
 <div class="table-container">
   <h2 class="text-center">Profiles</h2>
-  <div class="table-wrapper">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Username</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Voter's id</th>
-          <th>State</th>
-          <th>Status</th>
-          <th colspan="2" ng-show = "loggedInRole=='Autheriser'">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat = "user in users">
-          <td ng-click="viewProfile(user.id)">{{user.user_name}}</td>
-          <td>{{user.first_name}}</td>
-          <td>{{user.second_name}}</td>
-          <td>{{user.voters_id}}</td>
-          <td>{{user.state}}</td>
-          <td ng-show="user.verified==true">Approved</td>
-          <td ng-show="user.verified==false">Not approved</td>
-          <td ng-show = "loggedInRole=='Autheriser'">
-            <div class="button-wrapper clearfix" ng-show="user.verified==false">
-              <button class="pull-left btn btn-default btn-primary text-left" ng-click="approve(user.id)">Approve</button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="row" ng-show = "loggedInRole=='Viewer'||loggedInRole=='viewer'">
+    <div class="col-lg-6">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search by user name, first name or second name" ng-model="search" ng-change="searchProfile()">
+        <span class="input-group-btn">
+          <button class="btn btn-default search-btn" type="button" ng-click="searchProfile()">search</button>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="table-wrapper" ng-show = "(loggedInRole=='Viewer'||loggedInRole=='viewer')&&searchResult">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Voter's id</th>
+            <th>State</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat = "user in users" ng-show="user.search">
+            <td ng-click="viewProfile(user.id)">{{user.user_name}}</td>
+            <td>{{user.first_name}}</td>
+            <td>{{user.second_name}}</td>
+            <td>{{user.voters_id}}</td>
+            <td>{{user.state}}</td>
+            <td ng-show="user.verified==true">Approved</td>
+            <td ng-show="user.verified==false">Not approved</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  <div class="table-wrapper" ng-show = "loggedInRole=='Agency'||loggedInRole=='agency'||loggedInRole=='Autheriser'||loggedInRole=='autheriser'">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Voter's id</th>
+            <th>State</th>
+            <th>Status</th>
+            <th colspan="2" ng-show = "loggedInRole=='Autheriser'">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat = "user in users">
+            <td ng-click="viewProfile(user.id)">{{user.user_name}}</td>
+            <td>{{user.first_name}}</td>
+            <td>{{user.second_name}}</td>
+            <td>{{user.voters_id}}</td>
+            <td>{{user.state}}</td>
+            <td ng-show="user.verified==true">Approved</td>
+            <td ng-show="user.verified==false">Not approved</td>
+            <td ng-show = "loggedInRole=='Autheriser'">
+              <div class="button-wrapper clearfix" ng-show="user.verified==false">
+                <button class="pull-left btn btn-default btn-primary text-left" ng-click="approve(user.id)">Approve</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="col-lg-4 col-md-4" ng-show = "loggedInRole=='Agency'||loggedInRole=='agency'">
+          <div class="button-wrapper clearfix">
+            <button class="pull-right btn btn-default btn-primary text-left" ng-click="addProfile()">+ Add new profile</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

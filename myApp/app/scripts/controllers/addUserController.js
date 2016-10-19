@@ -11,10 +11,10 @@ angular.module('myApp')
   .controller('addUserController', function ($scope,$rootScope,$http,$state,$stateParams,addUserService) {
     $scope.user = {};
     if(($rootScope.loggedInRole == "Master")||($rootScope.loggedInRole == "master")){
-      $scope.roles = ["Select your role","Master","Admin", "Agency", "Autheriser"];
+      $scope.roles = ["Select your role","Master","Admin", "Agency", "Autheriser","Viewer"];
     }
     if(($rootScope.loggedInRole == "Admin")||($rootScope.loggedInRole == "admin")){
-      $scope.roles = ["Select your role", "Agency", "Autheriser"];
+      $scope.roles = ["Select your role", "Agency", "Autheriser","Viewer"];
     }
     //an array of files selected
     $scope.files = [];
