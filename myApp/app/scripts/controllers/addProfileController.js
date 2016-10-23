@@ -55,6 +55,10 @@ angular.module('myApp')
               $scope.showErrormessage = true;
               $scope.errorMessage = "Enter mobile number";
       }
+      else if ($scope.mobile_number.length>10){
+              $scope.showErrormessage = true;
+              $scope.errorMessage = "Please enter 10 digit number";
+            }
       else if (($scope.sponsers_name==="")||($scope.sponsers_name === undefined)){
               $scope.showErrormessage = true;
               $scope.errorMessage = "Enter sponser's name";
