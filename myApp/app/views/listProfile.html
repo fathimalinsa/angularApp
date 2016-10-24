@@ -4,7 +4,7 @@
   <div class="row" ng-show = "loggedInRole=='Viewer'||loggedInRole=='viewer'">
     <div class="col-lg-6">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search by user name, first name or second name" ng-model="search" ng-change="searchProfile()">
+        <input type="text" class="form-control" placeholder="Search" ng-model="search" ng-change="searchProfile()">
         <span class="input-group-btn">
           <button class="btn btn-default search-btn" type="button" ng-click="searchProfile()">search</button>
         </span>

@@ -28,19 +28,23 @@ angular.module('myApp')
       $state.go("addProfile");
     }
     $scope.searchProfile = function() {
-      angular.forEach($scope.users, function(user) {
-        user.search = false;
-        $scope.searchResult = false;
+      $scope.searchResult = false;
+      // angular.forEach($scope.users, function(user) {
+      for(var i=0;i<$scope.users.length;i++){
+        $scope.users[i].search = false;
         if($scope.search!="") {
-          if(( user.user_name.indexOf($scope.search) >= 0 )||( user.first_name.indexOf($scope.search) >= 0 )||( user.second_name.indexOf($scope.search) >= 0 )||( user.mobile.indexOf($scope.search) >= 0 )
-          ||( user.voters_id.indexOf($scope.search) >= 0 )||( user.sponser_number.indexOf($scope.search) >= 0 )||( user.sponsers_name.indexOf($scope.search) >= 0 )||( user.blood_group.indexOf($scope.search) >= 0 )
-          ||( user.height.indexOf($scope.search) >= 0 )||( user.weight.indexOf($scope.search) >= 0 )||( user.addr_line1.indexOf($scope.search) >= 0 )
-          ||( user.addr_line2.indexOf($scope.search) >= 0 )||( user.current_location.indexOf($scope.search) >= 0 )) {
-            user.search = true;
+          if(( $scope.users[i].user_name.indexOf($scope.search) >= 0 )||( $scope.users[i].first_name.indexOf($scope.search) >= 0 )||( $scope.users[i].second_name.indexOf($scope.search) >= 0 )||( $scope.users[i].mobile_number.indexOf($scope.search) >= 0 )
+          ||( $scope.users[i].voters_id.indexOf($scope.search) >= 0 )||($scope.users[i].sponser_number.indexOf($scope.search) >= 0 )||($scope.users[i].sponsers_name.indexOf($scope.search) >= 0 )||( $scope.users[i].blood_group.indexOf($scope.search) >= 0 )
+          ||( $scope.users[i].height.indexOf($scope.search) >= 0 )||( $scope.users[i].weight.indexOf($scope.search) >= 0 )||( $scope.users[i].addr_line1.indexOf($scope.search) >= 0 )
+          ||( $scope.users[i].addr_line2.indexOf($scope.search) >= 0 )||( $scope.users[i].current_location.indexOf($scope.search) >= 0 )) {
+            $scope.users[i].search = true;
             $scope.searchResult = true;
           }
+          else {
+            $scope.users[i].search = false;
+          }
         }
-      });
+      };
     }
     console.log($rootScope.isLoggedIn,$rootScope.loggedInUserName,$rootScope.loggedInRole);
   });
